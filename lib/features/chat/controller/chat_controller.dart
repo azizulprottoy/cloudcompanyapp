@@ -8,6 +8,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../../../core/error/api_error.dart';
 import '../../../core/utils/app_services.dart';
+import '../../notifications/controller/notification_center.dart';
 import '../model/chat_models.dart';
 import '../repository/chat_repository.dart';
 
@@ -40,6 +41,8 @@ class ChatController extends GetxController {
   void onInit() {
     super.onInit();
     room = Get.arguments as ChatRoom;
+    // No pop-up pushes for the conversation already on screen.
+    NotificationCenter.to.activeChatRoom = room.roomId;
     load();
     _connect();
   }
@@ -169,6 +172,9 @@ class ChatController extends GetxController {
 
   @override
   void onClose() {
+    if (NotificationCenter.to.activeChatRoom == room.roomId) {
+      NotificationCenter.to.activeChatRoom = null;
+    }
     _closed = true;
     _reconnectTimer?.cancel();
     _socketSub?.cancel();

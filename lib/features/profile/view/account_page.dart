@@ -8,6 +8,7 @@ import '../../../core/auth/session_service.dart';
 import '../../../core/utils/app_constants.dart';
 import '../../../shared/widgets/app_network_image.dart';
 import '../controller/profile_controllers.dart';
+import '../../notifications/controller/notification_center.dart';
 
 /// "Account" tab for every role.
 class AccountPage extends GetView<ProfileController> {
@@ -138,6 +139,24 @@ class AccountPage extends GetView<ProfileController> {
                         );
                         if (changed == true) controller.load();
                       },
+                    ),
+                  ListTile(
+                    leading: const Icon(Icons.notifications_none),
+                    title: const Text('Notifications'),
+                    trailing: Obx(() {
+                      final n = NotificationCenter.to.unread.value;
+                      return n > 0
+                          ? Badge(label: Text('$n'))
+                          : const Icon(Icons.chevron_right);
+                    }),
+                    onTap: () => Get.toNamed(AppRoutes.notifications),
+                  ),
+                  if (controller.role == UserRole.admin)
+                    ListTile(
+                      leading: const Icon(Icons.campaign_outlined),
+                      title: const Text('Send announcement'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => Get.toNamed(AppRoutes.sendNotification),
                     ),
                   ListTile(
                     leading: const Icon(Icons.chat_outlined),

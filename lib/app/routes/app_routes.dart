@@ -28,4 +28,6 @@ class AppRoutes {
 
   // Shared
   static const chat = '/chat';
+  static const notifications = '/notifications';
+  static const sendNotification = '/sendNotification';
 }

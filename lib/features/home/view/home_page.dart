@@ -9,6 +9,7 @@ import '../../../core/utils/app_constants.dart';
 import '../../../shared/widgets/app_network_image.dart';
 import '../../../shared/widgets/state_views.dart';
 import '../../main/controller/shell_controllers.dart';
+import '../../notifications/view/widgets/notification_bell.dart';
 import '../../packages/view/widgets/package_card.dart';
 import '../controller/home_controller.dart';
 
@@ -216,6 +217,7 @@ class _Hero extends StatelessWidget {
             children: [
               Image.asset('assets/images/logo_white.png', height: 36),
               const Spacer(),
+              const NotificationBell(color: Colors.white),
               Obx(
                 () => SessionService.to.isSignedIn
                     ? const SizedBox.shrink()

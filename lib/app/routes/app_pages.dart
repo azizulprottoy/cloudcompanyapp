@@ -11,6 +11,9 @@ import '../../features/blog/view/blog_details_page.dart';
 import '../../features/chat/binding/chat_binding.dart';
 import '../../features/chat/view/chat_page.dart';
 import '../../features/main/binding/shell_bindings.dart';
+import '../../features/notifications/controller/send_notification_controller.dart';
+import '../../features/notifications/view/notifications_page.dart';
+import '../../features/notifications/view/send_notification_page.dart';
 import '../../features/main/view/shell_pages.dart';
 import '../../features/orders/binding/order_bindings.dart';
 import '../../features/orders/view/order_details_page.dart';
@@ -159,6 +162,19 @@ class AppPages {
       page: () => const ChatPage(),
       binding: ChatBinding(),
       middlewares: _signedIn,
+    ),
+    GetPage(
+      // Public: signed-out users see announcements here.
+      name: AppRoutes.notifications,
+      page: () => const NotificationsPage(),
+    ),
+    GetPage(
+      name: AppRoutes.sendNotification,
+      page: () => const SendNotificationPage(),
+      binding: BindingsBuilder(
+        () => Get.lazyPut(() => SendNotificationController()),
+      ),
+      middlewares: _admin,
     ),
   ];
 }

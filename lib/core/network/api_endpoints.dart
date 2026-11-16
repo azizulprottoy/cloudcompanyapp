@@ -60,4 +60,15 @@ class ApiEndpoints {
   static const sendTaskChat = '/addempchat';
   static const sendTaskChatFiles = '/addempchat/files';
   static String markTaskChatRead(String taskId) => '/empchat/mark-read/$taskId';
+
+  // ── Notifications ───────────────────────────────────────────────────────────
+  static const notifications = '/notifications';
+  static const publicNotifications = '/notifications/public';
+  static const unreadNotifications = '/notifications/unread-count';
+  static const readAllNotifications = '/notifications/read-all';
+  static String readNotification(String id) => '/notifications/$id/read';
+  static String notification(String id) => '/notifications/$id';
+  static const adminNotifications = '/admin/notifications';
+  static const deviceToken = '/push/device-token';
+  static String task(String id) => '/task/$id';
 }

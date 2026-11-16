@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../app/theme/app_colors.dart';
 import '../../core/auth/session_service.dart';
+import '../../core/notifications/push_notification_service.dart';
 
 /// Brief brand screen, then straight to the signed-in role's home or to login.
 class SplashPage extends StatefulWidget {
@@ -18,6 +19,11 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Future.delayed(const Duration(milliseconds: 700), () {
       Get.offAllNamed(SessionService.to.homeRoute);
+      // A notification tap that launched the app opens its screen now.
+      Future.delayed(
+        const Duration(milliseconds: 300),
+        PushNotificationService.to.openPending,
+      );
     });
   }
 

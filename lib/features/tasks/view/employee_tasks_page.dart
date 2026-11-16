@@ -5,6 +5,7 @@ import '../../../app/theme/app_colors.dart';
 import '../../../shared/widgets/state_views.dart';
 import '../controller/task_controllers.dart';
 import 'widgets/task_card.dart';
+import '../../notifications/view/widgets/notification_bell.dart';
 
 /// Team "Tasks" tab.
 class EmployeeTasksPage extends GetView<EmployeeTasksController> {
@@ -13,7 +14,10 @@ class EmployeeTasksPage extends GetView<EmployeeTasksController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My tasks')),
+      appBar: AppBar(
+        title: const Text('My tasks'),
+        actions: const [NotificationBell()],
+      ),
       body: Column(
         children: [
           Obx(

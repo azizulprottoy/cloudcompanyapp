@@ -9,6 +9,7 @@ import '../../orders/model/order_model.dart';
 import '../../tasks/model/task_model.dart';
 import '../controller/dashboard_controller.dart';
 import '../repository/dashboard_repository.dart';
+import '../../notifications/view/widgets/notification_bell.dart';
 
 /// Admin "Dashboard" tab.
 class DashboardPage extends GetView<DashboardController> {
@@ -23,6 +24,7 @@ class DashboardPage extends GetView<DashboardController> {
           name.isEmpty ? 'Dashboard' : 'Hi, ${name.split(' ').first}',
         ),
         actions: [
+          const NotificationBell(),
           IconButton(
             onPressed: () => controller.changeYear(-1),
             icon: const Icon(Icons.chevron_left),
