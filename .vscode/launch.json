@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "cloudcompany_app (local backend)",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=API_URL=http://localhost:5050",
+        "--dart-define=WS_URL=ws://localhost:5050"
+      ]
+    },
+    {
+      "name": "cloudcompany_app (local backend, Android emulator)",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=API_URL=http://10.0.2.2:5050",
+        "--dart-define=WS_URL=ws://10.0.2.2:5050"
+      ]
+    },
+    {
+      "name": "cloudcompany_app (production)",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
+}
